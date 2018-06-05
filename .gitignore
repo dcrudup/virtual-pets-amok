@@ -124,7 +124,7 @@ VirtualPetShelter virtualPetShelter;
 
 	VirtualPetShelterAMOKApp
 
-	Pet dog = new Dog("Lucky", 25, 25, 25, 25,25,25,"Organic Dog");
+		Pet dog = new Dog("Lucky", 25, 25, 25, 25,25,25,"Organic Dog");
 		Pet cat = new Cat("Sadie", 25, 25, 25, 25, 25, 25, "Organic Cat");
 		Pet robodog = new RoboDog("Bella", 25, 25, 25, 25, "Robotic Dog");
 		Pet robocat = new RoboCat("Charlie", 25, 25, 25, 25, "Robotic Cat");
@@ -143,17 +143,88 @@ VirtualPetShelter virtualPetShelter;
 		System.out.println("The following pets are staying with us right now:");
 
 		virtualPetShelter.showAllShelterPets();
-
-
-
-
-	
 }
 
 	
+System.out.println();
+		System.out.println("This is their current status:");
+		System.out.println();
+		System.out.println("Name" + "\t" + "Hunger" + "\t" + "Thirst" + "\t" + "Boredom");
+		String divider = "-------------------------------";
+		System.out.println(divider);
+		for (VirtualPet current : myVirtualPetShelter.getAllRescuedPets()) {
+			System.out.println(current.getRescueName() + "\t" + " " + current.getHungerLevel() + "\t"
+					+ current.getThirstLevel() + "\t" + current.getBoredomLevel());
+		}	
+	
+
+
+
+
+
+	if (choice.equals("1")) {
+
+				System.out.println("Welcome to iHeart Pets Virtual Pet Shelter Intake Center.");
+				System.out.println("When Animal Control brings in stray without tags,");
+				System.out.println("we give our visitors a name for recordkeeping purposes.");
+				System.out.println();
+				System.out.println("Choose a name for our new friend:");
+
+				String newPetName = input.nextLine();
+
+				System.out.println("Welcome, " + newPetName + "!");
+				System.out.println();
+				System.out.println("Is our new visitor Organic or Robotic : ");
+
+				String newPetDescription = input.next();
+				VirtualPet newShelterPet = new VirtualPet("Name: " + newPetName + " "+  "Description: " +newPetDescription);
+				virtualPetShelter.add(newShelterPet);
+
+				System.out.println(newPetName + ", hopefully your pet parents will come here to find you.");
+				System.out.println("If not, we'll find another home for you.");
 	
 	
-	
-	
+
+
+	// admit a pet
+				virtualPetShelter.tickAllPets(pets);
+				System.out.println("Do you have a: \n\tA. Organic Dog \n\t B. Organic Cat \n\t C. Robot Dog \n\t D. Robot Cat");
+				String newPet = input.next();
+				switch (newPet.toUpperCase()) {
+
+				//Organic Dog	
+				if(choice.equals ("A")){
+					System.out.println("What will you name the new dog?");
+					String newPetName = input.next();
+					Pet newDog = new Dog(newPetName, 10, 10, 10, 10, 10, description);
+					virtualPetShelter.addPet(newDog);
+					}
+				case "B"://ocat
+					System.out.println("What will you name the new cat?");
+					String oCatName = input.next();
+					VirtualPet newOCat = new OrganicDog(oCatName, 10, 10, 10, 10, 10);
+					myShelter.addPet(newOCat);
+					break;
+				case "C"://rcat
+					System.out.println("What will you name the new dog?");
+					String rDogName = input.next();
+					VirtualPet newRDog = new OrganicDog(rDogName, 10, 10, 10, 10, 10);
+					myShelter.addPet(newRDog);
+					break;
+				case "D":
+					System.out.println("What will you name the new cat?");
+					String rCatName = input.next();
+					VirtualPet newRCat = new OrganicDog(rCatName, 10, 10, 10, 10, 10);
+					myShelter.addPet(newRCat);
+					break;
+				}
+				System.out.println("Welcome to your new home!" );
+
+
+
+
+				you can iterate over just the organic pets like we did with the medical duties in the hospital project by using "instanceof"
+for(Employee employee : employees.values()) {
+            if (employee instanceof MedicalDuties) {
 	
 

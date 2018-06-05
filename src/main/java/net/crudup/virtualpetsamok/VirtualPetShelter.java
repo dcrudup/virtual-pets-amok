@@ -11,10 +11,12 @@ public class VirtualPetShelter {
 	public void addPet(Pet pet) {
 		pets.put(pet.getName(), pet);
 	}
-	
+
 	public void adoptPet(Pet pet) {
 		pets.remove(pet.getName());
 	}
+
+	// All Pets
 
 	public Collection<Pet> getAllPets() {
 		return pets.values();
@@ -22,24 +24,70 @@ public class VirtualPetShelter {
 
 	public void showAllPets() {
 		for (Pet pet : pets.values()) {
-			System.out.println("Name: " + pet.getName() +":" + " " + "Description: "+pet.getDescription());
+			System.out.println("Name: " + pet.getName() + ":" + " " + "Description: " + pet.getDescription()
+					+ " Boredom level: " + pet.getBoredom() + "Health level: " + pet.getHealth() + "Happiness level: "
+					+ pet.getHappiness());
 		}
 	}
-	
-	public void showAllRoboticPets() {
-		for (Pet pet : pets.values()) {
-			if (pet instanceof RoboticPet) {
-				System.out.println("Name: " + pet.getName() + " Description: " + pet.getDescription());
-			}
-		}
-	}
-	
+
+	// Organic Pets
+
 	public void showAllOrganicPets() {
 		for (Pet pet : pets.values()) {
 			if (pet instanceof OrganicPet) {
-				System.out.println("Name: " + pet.getName() + " Description: " + pet.getDescription());
+				System.out
+						.println("Name: " + pet.getName() + " Description: " + pet.getDescription() + " Hunger level: "
+								+ ((OrganicPet) pet).getHunger() + " Thirst level: " + ((OrganicPet) pet).getThirst()
+								 + " Waste level: " + ((OrganicPet) pet).getWaste());
 			}
 		}
 	}
-	
+
+	public void feedAllOrganicPets() {
+		for (Pet pet : pets.values()) {
+			if (pet instanceof OrganicPet) {
+				System.out.println("Name: " + pet.getName() + " Description: " + pet.getDescription()
+						+ " Hunger level: " + ((OrganicPet) pet).getHunger());
+			}
+		}
+	}
+
+	public void waterAllOrganicPets() {
+		for (Pet pet : pets.values()) {
+			if (pet instanceof OrganicPet) {
+				System.out.println("Name: " + pet.getName() + " Description: " + pet.getDescription()
+						+ " Thirst level: " + ((OrganicPet) pet).getThirst());
+			}
+		}
+	}
+
+	public void cleanAllOrganicPets() {
+		for (Pet pet : pets.values()) {
+			if (pet instanceof OrganicPet) {
+				System.out.println("Name: " + pet.getName() + " Description: " + pet.getDescription() + " Waste level: "
+						+ ((OrganicPet) pet).getWaste());
+			}
+		}
+	}
+
+	// Robotic Pets
+
+	public void showAllRoboticPets() {
+		for (Pet pet : pets.values()) {
+			if (pet instanceof RoboticPet) {
+				System.out.println("Name: " + pet.getName() + " Description: " + pet.getDescription() + " Oil level: "
+						+ ((RoboticPet) pet).getOilLevel());
+			}
+		}
+	}
+
+	public void tick() {
+
+	}
+
+	public Pet findPet(Pet name) {
+		
+		return name;
+	}
+
 }

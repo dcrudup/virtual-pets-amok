@@ -3,6 +3,7 @@ package net.crudup.virtualpetsamok;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
@@ -66,7 +67,13 @@ public class VirtualPetShelterTest {
 	}
 	
 	
-	
+	@Test
+	public void shouldBeAbleToAdoptAPet() {
+		virtualPetShelter.addPet(sadie);
+		virtualPetShelter.adoptPet(sadie);
+		Pet foundPet = virtualPetShelter.findPet(sadie.getName());
+		assertNull(foundPet);
+	}
 	
 	
 	
