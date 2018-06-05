@@ -2,3 +2,158 @@
 .project
 .settings
 bin/
+
+VirtualPetShelter Test
+
+
+VirtualPetShelter virtualPetShelter;
+	Dog lucky;
+	Cat sadie;
+	RoboDog bella;
+	RoboCat charlie;
+	
+	@Before
+	public void setUp() {
+		virtualPetShelter = new VirtualPetShelter();
+		lucky = new Dog("Lucky", 25, 25, 25, 25, 25, 25, "Organic Dog");
+		sadie = new Cat("Sadie", 25, 25, 25, 25, 25, 25, "Organic Cat");
+		bella = new RoboDog("Bella", 25, 25, 25, 25, "Robotic Dog");
+		charlie = new RoboCat("Charlie", 25, 25, 25, 25, "Robotic Cat");
+	}
+	
+	@Test
+	public void shouldBeAbleToIntakeDogs() {
+		virtualPetShelter.intake(lucky);
+		Dog admitDog = virtualPetShelter.intake(lucky);
+		assertThat(admitDog, is(lucky));
+	}
+	
+	@Test
+	public void shouldBeAbleToIntakeCats() {
+		virtualPetShelter.intake(sadie);
+		Cat admitCat = virtualPetShelter.intake(sadie);
+		assertThat(admitCat, is(sadie));
+	}
+	
+	@Test
+	public void shouldBeAbleToIntakeRoboDogs() {
+		virtualPetShelter.intake(bella);
+		RoboDog admitRoboDog = virtualPetShelter.intake(bella);
+		assertThat(admitRoboDog, is(bella));
+	}
+	
+	@Test
+	public void shouldBeAbleToIntakeRoboCats() {
+		virtualPetShelter.intake(charlie);
+		RoboCat admitRoboCat = virtualPetShelter.intake(charlie);
+		assertThat(admitRoboCat, is(charlie));
+	}
+	
+	@Test
+	public void shouldBeAbleToIntakeTwoDifferentTypesOfDogs() {
+		virtualPetShelter.intake(lucky);
+		virtualPetShelter.intake(bella);
+		Dog admitDog = virtualPetShelter.intake(lucky);
+		RoboDog admitRoboDog = virtualPetShelter.intake(bella);
+		assertThat(admitDog, is(lucky));
+		assertThat(admitRoboDog, is(bella));
+	}
+	
+	@Test
+	public void shouldBeAbleToAllowTheAdoptionOfADog() {
+		
+		virtualPetShelter.releaseDog(lucky);
+		Dog adoptDog = virtualPetShelter.releaseDog(lucky);
+		assertThat(adoptDog, is(lucky));
+	}
+	
+	/*@Test
+	public void shouldBeAbleToIntakeACollectionOfPets() {
+		virtualPetShelter.intake(lucky);
+		virtualPetShelter.intake(charlie);
+		Collection<Pet>shelterPets = virtualPetShelter.getAllShelterPets();
+		assertThat(shelterPets, containsInAnyOrder(charlie, lucky));
+		
+	}*/
+	
+	
+	VirtualPetShelter Class
+
+	Map<String, Pet> shelterPets = new HashMap<>();
+
+	public void add(Pet intake) {
+		shelterPets.put(intake.getName(), intake);
+	}
+
+	public Dog intake1(Pet dog) {
+		return dog;
+	}
+
+	public Cat intake(Pet cat) {
+		return sadie;
+
+	}
+
+	public RoboDog intake(Pet robodog) {
+
+		return bella;
+	}
+
+	public RoboCat intake(Pet robocat) {
+		return charlie;
+
+	}
+
+	public Dog releaseDog(Dog lucky) {
+		return lucky;
+
+	}
+	
+	public Collection<Pet> getAllShelterPets() {
+		
+		return shelterPets.values();
+	}
+
+	public void showAllShelterPets() {
+		
+		for(Pet shelterPet : shelterPets.values()) {
+			
+			System.out.println(shelterPet.getName());
+	}
+
+
+	VirtualPetShelterAMOKApp
+
+	Pet dog = new Dog("Lucky", 25, 25, 25, 25,25,25,"Organic Dog");
+		Pet cat = new Cat("Sadie", 25, 25, 25, 25, 25, 25, "Organic Cat");
+		Pet robodog = new RoboDog("Bella", 25, 25, 25, 25, "Robotic Dog");
+		Pet robocat = new RoboCat("Charlie", 25, 25, 25, 25, "Robotic Cat");
+		
+		virtualPetShelter.intake(dog);
+		virtualPetShelter.intake(cat);
+		virtualPetShelter.intake(robodog);
+		virtualPetShelter.intake(robocat);
+		
+		Collection<Pet> shelterPets = virtualPetShelter.getAllShelterPets();
+		
+		
+		System.out.println("Welcome to the Virtual Pet Shelter!");
+		System.out.println("Where organic and robotic cats and dogs run AMOK!");
+		System.out.println();
+		System.out.println("The following pets are staying with us right now:");
+
+		virtualPetShelter.showAllShelterPets();
+
+
+
+
+	
+}
+
+	
+	
+	
+	
+	
+	
+

@@ -19,8 +19,6 @@ public class DogTest {
 		int happiness = anyDog.getHappiness();
 		String description = anyDog.getDescription();
 
-		// assertThat(name, is ("name"));
-
 		assertEquals("name", name);
 		assertEquals(10, hunger);
 		assertEquals(10, thirst);

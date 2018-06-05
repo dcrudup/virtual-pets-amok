@@ -39,7 +39,6 @@ public abstract class Pet  {
 	
 	public abstract void play();
 
-	
 
 	public void reduceHealth() {
 		health -= 5;
