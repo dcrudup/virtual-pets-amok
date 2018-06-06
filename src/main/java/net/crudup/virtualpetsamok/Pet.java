@@ -1,6 +1,6 @@
 package net.crudup.virtualpetsamok;
 
-public abstract class Pet  {
+public abstract class Pet {
 
 	protected String name;
 	protected int boredom;
@@ -13,36 +13,35 @@ public abstract class Pet  {
 	}
 
 	public String getName() {
-	
+
 		return name;
 	}
 
 	public int getBoredom() {
-	
+
 		return boredom;
 	}
 
 	public int getHealth() {
-	
+
 		return health;
 	}
 
 	public int getHappiness() {
-	
+
 		return happiness;
 	}
 
 	public String getDescription() {
-	
+
 		return description;
 	}
-	
-	public abstract void play();
 
+	public abstract void play();
 
 	public void reduceHealth() {
 		health -= 5;
-	
+
 	}
 
 }

@@ -25,7 +25,7 @@ public class VirtualPetShelter {
 	public void showAllPets() {
 		for (Pet pet : pets.values()) {
 			System.out.println("Name: " + pet.getName() + ":" + " " + "Description: " + pet.getDescription()
-					+ " Boredom level: " + pet.getBoredom() + "Health level: " + pet.getHealth() + "Happiness level: "
+					+ " Boredom level: " + pet.getBoredom() + " Health level: " + pet.getHealth() + " Happiness level: "
 					+ pet.getHappiness());
 		}
 	}
@@ -86,7 +86,7 @@ public class VirtualPetShelter {
 
 	public void tick() {
 		for (Pet pet : pets.values()) {
-			if (pet instanceof RoboticPet) {
+			if (pet instanceof OrganicPet) {
 				((OrganicPet) pet).tick();
 			} else {
 				((RoboticPet) pet).tick();
@@ -94,9 +94,14 @@ public class VirtualPetShelter {
 		}
 	}
 
-	public Pet findPet(String petName) {
+	public Pet findPet (String petName) {
 
 		return pets.get(petName);
+	}
+
+	@Override
+	public String toString() {
+		return "VirtualPetShelter [pets=" + pets + ", getAllPets()=" + getAllPets() + "]";
 	}
 
 	public void walkAllDogs() {
@@ -115,10 +120,10 @@ public class VirtualPetShelter {
 	}
 
 	public void cleanDogCrates() {
-	
+
 	}
 
 	public void emptyLitterBoxes() {
-		
+
 	}
 }

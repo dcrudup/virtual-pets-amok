@@ -1,5 +1,7 @@
 package net.crudup.virtualpetsamok;
 
+import static org.mockito.Mockito.after;
+
 import java.util.Collection;
 import java.util.Scanner;
 
@@ -23,16 +25,12 @@ public class VirtualPetsAMOKApp {
 
 		System.out.println("Welcome the Virtual Pet Shelter");
 		System.out.println();
-		System.out.println("Here's all of the pets in my shelter: ");
+		System.out.println("Here's all of the pets in our shelter with their current biostats:  ");
 		System.out.println();
 
 		virtualPetShelter.showAllPets();
 
 		System.out.println();
-
-		// Display Status
-
-		System.out.println("Here are the current stats for all of our pets: ");
 
 		String choice = "";
 
@@ -57,48 +55,42 @@ public class VirtualPetsAMOKApp {
 
 			if (choice.equals("1")) {
 
-				// Tick instanceof OrganicPets: feed
-
 				System.out.println();
 				System.out.println("You've chosen to feed all of the organic pets.");
 				System.out.println();
 				virtualPetShelter.showAllOrganicPets();
 				virtualPetShelter.feedAllOrganicPets();
+				virtualPetShelter.tick();
 				System.out.println();
 
 			} else if (choice.equals("2")) {
-
-				// Tick instanceof OrganicPets: water
 
 				System.out.println("You've chose to water all of the organic pets.");
 				System.out.println();
 				virtualPetShelter.showAllOrganicPets();
 				virtualPetShelter.waterAllOrganicPets();
+				virtualPetShelter.tick();
 				System.out.println();
 
 			} else if (choice.equals("3")) {
-
-				// Tick instanceof RoboticPet: oil
 
 				System.out.println("You've chosen to oil all of the robotic pets.");
 				System.out.println();
 				virtualPetShelter.showAllRoboticPets();
 				virtualPetShelter.oilAllRoboticPets();
+				virtualPetShelter.tick();
 				System.out.println();
 
 			} else if (choice.equals("4")) {
-
-				// Walk all of the pets
-
-				System.out.println("You have chosen to walk all of the pets.");
+                System.out.println("You have chosen to walk all of the dogs.");
+                virtualPetShelter.walkAllDogs();
 				System.out.println();
 				virtualPetShelter.showAllPets();
 				virtualPetShelter.walkAllDogs();
+				virtualPetShelter.tick();
 				System.out.println();
 
 			} else if (choice.equals("5")) {
-
-				// Play with a pet
 
 				System.out.println("You have chosen play with a pet.");
 				System.out.println();
@@ -107,10 +99,11 @@ public class VirtualPetsAMOKApp {
 				virtualPetShelter.findPet(petName);
 				virtualPetShelter.playWithOnePet();
 				System.out.println();
+				System.out.println("Excellent choice!");
+				virtualPetShelter.tick();
+				System.out.println();
 
 			} else if (choice.equals("6")) {
-
-				// adopt a pet
 
 				System.out.println("You have chosen to adopt a pet.");
 				System.out.println();
@@ -119,14 +112,15 @@ public class VirtualPetsAMOKApp {
 				String petName = userInput.nextLine();
 				virtualPetShelter.findPet(petName);
 				System.out.println();
+				System.out.println(petName + " will be an excellent addition to your family!");
 
 			} else if (choice.equals("7")) {
 
-				// Intake Pets
-
 				System.out.println("You would like to admit a pet.");
 				System.out.println();
-				virtualPetShelter.showAllPets();
+				System.out.println("What is the name of the pet you'd like to admit?");
+				String newAdmit = userInput.nextLine();
+				System.out.println("Welcome " + newAdmit + "!");
 				System.out.println();
 
 			} else if (choice.equals("8")) {
@@ -135,6 +129,7 @@ public class VirtualPetsAMOKApp {
 				System.out.println();
 				virtualPetShelter.showAllOrganicPets();
 				virtualPetShelter.cleanDogCrates();
+				virtualPetShelter.tick();
 				System.out.println();
 
 			} else if (choice.equals("9")) {
@@ -143,6 +138,7 @@ public class VirtualPetsAMOKApp {
 				System.out.println();
 				virtualPetShelter.showAllOrganicPets();
 				virtualPetShelter.emptyLitterBoxes();
+				virtualPetShelter.tick();
 				System.out.println();
 
 			} else if (choice.equals("10")) {
@@ -150,7 +146,10 @@ public class VirtualPetsAMOKApp {
 				System.out.println("You have chosen to find a pet.");
 				System.out.println();
 				virtualPetShelter.showAllPets();
+				System.out.println("What is the name of the pet that you'd like to find?");
+				String petName = userInput.nextLine();
 				virtualPetShelter.findPet(petName);
+				System.out.println("We found " + virtualPetShelter.findPet(petName) +  "." );
 				System.out.println();
 
 			} else if (choice.equals("11")) {
