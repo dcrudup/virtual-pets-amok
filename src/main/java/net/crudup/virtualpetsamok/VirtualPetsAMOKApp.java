@@ -8,7 +8,7 @@ public class VirtualPetsAMOKApp {
 	public static void main(String[] args) {
 
 		Scanner userInput = new Scanner(System.in);
-		
+
 		VirtualPetShelter virtualPetShelter = new VirtualPetShelter();
 
 		Pet dog = new Dog("Lucky", 25, 25, 25, 25, 25, 25, "Organic Dog");
@@ -20,48 +20,19 @@ public class VirtualPetsAMOKApp {
 		virtualPetShelter.addPet(cat);
 		virtualPetShelter.addPet(robodog);
 		virtualPetShelter.addPet(robocat);
-		
-		
-		Collection<Pet> pets = virtualPetShelter.getAllPets();
 
 		System.out.println("Welcome the Virtual Pet Shelter");
 		System.out.println();
 		System.out.println("Here's all of the pets in my shelter: ");
 		System.out.println();
-		
-		for(Pet shelterPets : virtualPetShelter.getAllPets()) {
-			System.out.println(shelterPets.getName() + " " + shelterPets.getDescription());
-		}
-		
-		//virtualPetShelter.showAllPets();
+
+		virtualPetShelter.showAllPets();
 
 		System.out.println();
 
 		// Display Status
-		
+
 		System.out.println("Here are the current stats for all of our pets: ");
-		
-		for (Pet pet : virtualPetShelter.getAllPets()) {
-			System.out.println(pet.getName() + "\t" + " " + "\t" + pet.getDescription() + "\t" + pet.getHealth()
-			+ "\t" + pet.getHappiness() + "\t" + pet.getBoredom());
-			System.out.println();
-		}
-		
-		for (Pet pet : virtualPetShelter.showAllOrganicPets(); {
-			if (pet instanceof OrganicPet) {
-				System.out
-						.println("Name: " + pet.getName() + " Description: " + pet.getDescription() + " Hunger level: "
-								+ ((OrganicPet) pet).getHunger() + " Thirst level: " + ((OrganicPet) pet).getThirst()
-								 + " Waste level: " + ((OrganicPet) pet).getWaste());
-			}
-		}
-	
-		for (Pet pet : virtualPetShelter.showAllRoboticPets(); {
-		if (pet instanceof RoboticPet) {
-			System.out.println("Name: " + pet.getName() + " Description: " + pet.getDescription() + " Oil level: "
-					+ ((RoboticPet) pet).getOilLevel());
-		}
-	}
 
 		String choice = "";
 
@@ -84,29 +55,25 @@ public class VirtualPetsAMOKApp {
 
 			System.out.println();
 
-
 			if (choice.equals("1")) {
-				
-				// Tick instanceof OrganicPet: feed
-				
-				for (Pet pet : pets.values()) {
-					if (pet instanceof OrganicPet) {
-						System.out.println("Name: " + pet.getName() + " Description: " + pet.getDescription()
-								+ " Hunger level: " + ((OrganicPet) pet).getHunger());
-					}
 
-				}
-				
+				// Tick instanceof OrganicPets: feed
+
 				System.out.println();
 				System.out.println("You've chosen to feed all of the organic pets.");
+				System.out.println();
+				virtualPetShelter.showAllOrganicPets();
+				virtualPetShelter.feedAllOrganicPets();
 				System.out.println();
 
 			} else if (choice.equals("2")) {
 
-				// Tick instanceof OrganicPet: water
+				// Tick instanceof OrganicPets: water
+
 				System.out.println("You've chose to water all of the organic pets.");
 				System.out.println();
 				virtualPetShelter.showAllOrganicPets();
+				virtualPetShelter.waterAllOrganicPets();
 				System.out.println();
 
 			} else if (choice.equals("3")) {
@@ -116,8 +83,9 @@ public class VirtualPetsAMOKApp {
 				System.out.println("You've chosen to oil all of the robotic pets.");
 				System.out.println();
 				virtualPetShelter.showAllRoboticPets();
+				virtualPetShelter.oilAllRoboticPets();
 				System.out.println();
-				
+
 			} else if (choice.equals("4")) {
 
 				// Walk all of the pets
@@ -125,15 +93,19 @@ public class VirtualPetsAMOKApp {
 				System.out.println("You have chosen to walk all of the pets.");
 				System.out.println();
 				virtualPetShelter.showAllPets();
+				virtualPetShelter.walkAllDogs();
 				System.out.println();
 
 			} else if (choice.equals("5")) {
 
 				// Play with a pet
 
-				System.out.println("You have chosen to play with a pet.");
+				System.out.println("You have chosen play with a pet.");
 				System.out.println();
-				virtualPetShelter.showAllPets();
+				System.out.println("Which pet do you want to play with?");
+				String petName = userInput.nextLine();
+				virtualPetShelter.findPet(petName);
+				virtualPetShelter.playWithOnePet();
 				System.out.println();
 
 			} else if (choice.equals("6")) {
@@ -143,6 +115,9 @@ public class VirtualPetsAMOKApp {
 				System.out.println("You have chosen to adopt a pet.");
 				System.out.println();
 				virtualPetShelter.showAllPets();
+				System.out.println("Which pet would you like to adopt?");
+				String petName = userInput.nextLine();
+				virtualPetShelter.findPet(petName);
 				System.out.println();
 
 			} else if (choice.equals("7")) {
@@ -158,14 +133,16 @@ public class VirtualPetsAMOKApp {
 
 				System.out.println("You have chosen to clean the dog crates.");
 				System.out.println();
-				virtualPetShelter.showAllPets();
+				virtualPetShelter.showAllOrganicPets();
+				virtualPetShelter.cleanDogCrates();
 				System.out.println();
 
 			} else if (choice.equals("9")) {
 
 				System.out.println("You have chosen to empty the litter boxes.");
 				System.out.println();
-				virtualPetShelter.showAllPets();
+				virtualPetShelter.showAllOrganicPets();
+				virtualPetShelter.emptyLitterBoxes();
 				System.out.println();
 
 			} else if (choice.equals("10")) {
@@ -173,15 +150,12 @@ public class VirtualPetsAMOKApp {
 				System.out.println("You have chosen to find a pet.");
 				System.out.println();
 				virtualPetShelter.showAllPets();
+				virtualPetShelter.findPet(petName);
 				System.out.println();
-				
 
 			} else if (choice.equals("11")) {
-
 				System.out.println("You have chosen to exit the system. Goodbye!");
-
 				System.exit(0);
-
 			} else {
 
 			}

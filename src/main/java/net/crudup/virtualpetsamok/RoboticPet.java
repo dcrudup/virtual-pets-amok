@@ -25,4 +25,8 @@ public abstract class RoboticPet extends Pet {
 		this.reduceOilLevel();
 	}
 
+	public void tick() {
+		
+	}
+
 }
